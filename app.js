@@ -84,7 +84,7 @@ async function quickGameStart() {
     let game501;
     let games = await apiGet({ resource: 'games' });
     
-    game501 = games.games.find(g => g.name.includes('501'));
+    game501 = games.games.find(g => String(g.name).includes('501'));
     if (!game501) {
       const newGame = await apiPost({
         action: 'create_game',
