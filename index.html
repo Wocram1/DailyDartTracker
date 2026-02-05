@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dart Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="global-error" style="display:none;"></div>
+  <div id="global-success" style="display:none;"></div>
+
+  <header>
+    <h1>🎯 Dart Tracker</h1>
+  </header>
+
+  <main>
+    <section id="game-section">
+      <h2>Spiel wählen oder erstellen</h2>
+      <div class="form-row">
+        <select id="game-select"><option>Lade Spiele...</option></select>
+        <button id="reload-games">Aktualisieren</button>
+      </div>
+      
+      <details>
+        <summary>Neues Spiel anlegen</summary>
+        <div class="form-group">
+          <input id="new-game-name" placeholder="Name (z.B. 501 Custom)" required>
+          <input id="new-game-type" placeholder="Typ (x01, cricket, custom)">
+          <input id="new-game-start" placeholder="Startscore (z.B. 501)">
+          <textarea id="new-game-rules" placeholder='{"double_out": true}'></textarea>
+          <button id="create-game-btn">Spiel speichern</button>
+        </div>
+      </details>
+    </section>
+
+    <section id="match-section">
+      <h2>Match starten</h2>
+      <div class="form-row">
+        <input id="players-input" placeholder="Spieler-IDs (1,2,3)" required>
+        <button id="start-match-btn">Match starten</button>
+      </div>
+      <p id="match-info" class="status"></p>
+    </section>
+
+    <section id="throw-section">
+      <h2>Wurf eingeben</h2>
+      <div class="form-group">
+        <input id="throw-player-id" placeholder="Player ID" required>
+        <input id="throw-round" placeholder="Runde">
+        <input id="throw-darts" placeholder="Darts (T20,T20,D5)">
+        <input id="throw-score" placeholder="Score" type="number">
+        <button id="submit-throw-btn">Wurf speichern</button>
+      </div>
+      <p id="throw-status" class="status"></p>
+    </section>
+
+    <section id="live-section">
+      <h2>Live Match</h2>
+      <button id="reload-match">Aktualisieren</button>
+      <pre id="match-view"></pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
