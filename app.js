@@ -140,6 +140,41 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('start-match-btn').onclick = startMatch;
   document.getElementById('submit-throw-btn').onclick = submitThrow;
   document.getElementById('reload-match').onclick = loadCurrentMatchView;
+  // 🆕 QUICK GAME BUTTON
+document.getElementById('quick-game-btn').onclick = async function() {
+  try {
+    // 1. Spieler "Spieler 1" anlegen (falls nicht vorhanden)
+    await apiPost({
+      action: 'create_game',
+      name: 'Quick 501',
+      type: 'x01',
+      start_score: '501',
+      rules: { double_out: true }
+    });
+    
+    // 2. Spieler-ID 1 für "Spieler 1" nutzen (du hast ihn schon in der Tabelle)
+    const gameData = await apiGet({ resource: 'games' });
+    const game501 = gameData.games.find(g => g.name.includes('501') || g.name.includes('Quick'));
+    
+    // 3. Match starten
+    const matchResp = await apiPost({
+      action: 'create_match',
+      game_id: game501.game_id,
+      player_ids: [1]  // Spieler 1
+    });
+    
+    currentMatchId = matchResp.match_id;
+    document.getElementById('match-info').textContent = Quick 501 gestartet: Match ${currentMatchId};
+    document.getElementById('match-info').className = 'status success';
+    showSuccess('🎯 Quick Game läuft! Player 1 vs 501');
+    
+    // 4. Automatisch Match-Ansicht laden
+    await loadCurrentMatchView();
+    
+  } catch (err) {
+    showError('Quick Game Fehler: ' + err.message);
+  }
+};
   
   loadGames();
   
