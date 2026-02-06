@@ -1,5 +1,5 @@
 // 🔥 DEINE APPS SCRIPT URL HIER EINFÜGEN!
-const API_URL = 'https://script.google.com/macros/s/AKfycbxII1QVrpqLJA4NvRq6nkCYlACuFKSJ_RHjSUAnOxl5-CnfPToyuURzJjMe4kScZImnJg/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbyri7DIXxJCAvDiaYLwXMKrsoP2nttPpPqPOqm5CFHLh7_lcnvwj80fE-vMRQ6ZGwxFQg/exec';
 const APP_VERSION = '1.0.0';
 let currentMatchId = null;
 let gamesCache = [];
